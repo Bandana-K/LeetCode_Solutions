@@ -10,9 +10,9 @@ class Solution {
             if(leftChar == rightChar){
                 i++;
                 j--;
-            } else if(!isValidAlphaNumeric(leftChar)){
+            } else if(!Character.isLetterOrDigit(leftChar)){
                 i++;
-            } else if(!isValidAlphaNumeric(rightChar)){
+            } else if(!Character.isLetterOrDigit(rightChar)){
                 j--;
             } else {
                 return false;
