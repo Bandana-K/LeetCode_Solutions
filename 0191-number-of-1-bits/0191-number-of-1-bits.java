@@ -9,3 +9,9 @@ class Solution {
         return result;
     }
 }
+
+class Other_Solution {
+    public int hammingWeight(int n) {
+        return Integer.bitCount(n);
+    }
+}
