@@ -25,9 +25,7 @@ class Solution {
     public boolean areSymmetric(TreeNode left, TreeNode right) {
         if(left == null && right == null)
             return true;
-        if((left == null && right != null) 
-             || (left != null && right == null)
-                || (left.val != right.val))
+        if((left == null && right != null) || (left != null && right == null) || (left.val != right.val))
             return false;            
         else {
             return areSymmetric(left.left, right.right) && areSymmetric(left.right, right.left);
