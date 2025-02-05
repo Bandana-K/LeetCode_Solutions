@@ -1,28 +1,33 @@
-// class Solution {
-//     public boolean areAlmostEqual(String s1, String s2) {
-
-//         Map<Character, Integer> charFreq = new HashMap<>();
-        
-//         for(int i = 0; i < s1.length(); i++){
-//             if(s1.charAt(i) != s2.charAt(i))
-//             {
-//                 if(charFreq.size() == 2) return false;
-//                 charFreq.put(s1.charAt(i), i);
-//             }
-//         }
-
-//         if(charFreq.size() == 0) return true;
-//         if(charFreq.size() == 1) return false;
-
-//         var entries = charFreq.entrySet();
-//         if(s2.charAt(entries.get(0).value()) == entries.get(1).key()
-//             && s2.charAt(entries.get(1).value()) == entries.get(0).key())
-//         return true;
-
-//         return false;
-//     }
-
 class Solution {
+    public boolean areAlmostEqual(String s1, String s2) {
+
+        int misMatch = 0, fMismatch = 0, sMismatch = 0;
+        
+        for(int i = 0; i < s1.length(); i++){
+            if(s1.charAt(i) != s2.charAt(i))
+            {
+                if(misMatch == 2) return false;
+                if(misMatch == 0){
+                    fMismatch = i;
+                    misMatch++;
+                }
+                else if(misMatch == 1){
+                    sMismatch = i;
+                    misMatch++;
+                }
+            }
+        }
+
+        if(misMatch == 0) return true;
+        if(misMatch == 1) return false;
+        if(s1.charAt(fMismatch) == s2.charAt(sMismatch) && s1.charAt(sMismatch) == s2.charAt(fMismatch))
+            return true;
+        return false;
+    }
+}
+
+
+class Other_Solution {
     public boolean areAlmostEqual(String s1, String s2) {
         var idx = -1;   // index of first mismatch
         
