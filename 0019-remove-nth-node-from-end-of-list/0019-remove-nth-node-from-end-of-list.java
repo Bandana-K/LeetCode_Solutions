@@ -18,24 +18,17 @@ class Solution {
         dummy.next = head;
 
         ListNode slow = dummy, fast = dummy;
-        System.out.println( " fast val = " + fast.val);
-        System.out.println( " slow val = " + slow.val);
         
         for(int i = 1; i <= n; i++){
             fast = fast.next;
-            System.out.println(" i done = " + i + " fast val = " + fast.val);
         }
 
         while(fast.next != null){
-            System.out.println( " fast val = " + fast.val);
-            System.out.println( " slow val = " + slow.val);
-
             fast = fast.next;
             slow = slow.next;
         }
 
         slow.next = slow.next.next;
-
         return dummy.next;
     }
 }
