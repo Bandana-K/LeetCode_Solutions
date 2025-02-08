@@ -11,28 +11,23 @@
 class Solution {
     public boolean isPalindrome(ListNode head) {
 
-        if(head == null || head.next == null) return true;
+        if(head == null || head.next == null) return true;              //If head is null or only 1 element present then its palindrome
 
         ListNode temp = head;
-        ListNode midNode = findMidNode(temp);
-        System.out.println("midNode = " + midNode.val);
-
-        ListNode reversedListhead = reverseLinkedList(midNode.next);
-        System.out.println("reversedListhead = " + reversedListhead.val);
-
+        ListNode midNode = findMidNode(temp);                           //find the mid elelemt in order to reverse next half of the list.
+        ListNode reversedListhead = reverseLinkedList(midNode.next);    //reverse the next half of the list and get the head of reversedList
         ListNode newTemp = reversedListhead;
 
         while(newTemp != null){
-            System.out.println("newTemp = " + newTemp.val + " temp = " + temp.val);
             if(newTemp.val != temp.val){
-                reverseLinkedList(midNode.next);
+                reverseLinkedList(midNode.next);                        //Reverse the reversed 2nd half ensuring original list remains same
                 return false;
             }
             newTemp = newTemp.next;
             temp = temp.next;
         }
 
-        reverseLinkedList(midNode.next);
+        reverseLinkedList(midNode.next);                                //Reverse the reversed 2nd half ensuring original list remains same
         return true;    
     }
 
