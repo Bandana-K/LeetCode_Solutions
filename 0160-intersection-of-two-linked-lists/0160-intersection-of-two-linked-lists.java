@@ -15,22 +15,17 @@ public class Solution {
         int n1 = countLength(headA);
         int n2 = countLength(headB);
 
-        System.out.println("Length of A = " + n1);
-        System.out.println("Length of B = " + n2);
-
         ListNode temp1 = headA;
         ListNode temp2 = headB;
 
         if(n1 > n2){ //List1 is big, so move the temp1 pointer ahead by lengthDiff
             int lengthDiff = n1 - n2;
             for(int i = 1; i <= lengthDiff; i++){
-                System.out.println("current i = " + i + " current temp1 = " + temp1.val);
                 temp1 = temp1.next;
             }
         } else if(n1 < n2){ //List2 is big, so move the temp2 pointer ahead by lengthDiff
             int lengthDiff = n2 - n1;
             for(int i = 1; i <= lengthDiff; i++){
-                System.out.println("current i = " + i + " current temp2 = " + temp2.val);
                 temp2 = temp2.next;
             }
         }
