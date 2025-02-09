@@ -1,5 +1,5 @@
-// Water stored at any unit is = Min(leftMaxHeightBuilding, rightMaxHeightBuilding) - height of current unit
-//Time complexity is O(3*n) ~~ O(n) and space is O(2n) ~ O(n)
+//Water stored at any unit is = Min(leftMaxHeightBuilding, rightMaxHeightBuilding) - height of current unit
+//Time complexity is O(2*n) ~~ O(n) and space is O(n)
 class Solution {
     public int trap(int[] height) {
 
@@ -13,19 +13,13 @@ class Solution {
             leftMax[i] = currentLeftMax;
         }
 
-        int[] rightMax = new int[n];
         int currentRightMax = height[n-1];
-        rightMax[n-1] = currentRightMax;
-        for(int i = n-2; i >= 0 ; i--){
+        int ans = 0;
+        for(int i = n-1; i >= 0 ; i--){
             currentRightMax = Math.max(currentRightMax, height[i]);
-            rightMax[i] = currentRightMax;
+            ans += (Math.min(leftMax[i], currentRightMax) - height[i]);
         }
 
-        int ans = 0;
-        for(int i = 0; i < n; i++){
-            ans += (Math.min(leftMax[i], rightMax[i]) - height[i]);
-        }
-        
         return ans;
     }
 }
