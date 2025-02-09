@@ -1,3 +1,4 @@
+//COPIED
 class Solution {
     public long countBadPairs(int[] nums) {
         // count how many numbers differ from their index
@@ -16,4 +17,6 @@ class Solution {
             count += freq * numsCount;
         }
 
-        return count;1
+        return count;
+    }
+}
