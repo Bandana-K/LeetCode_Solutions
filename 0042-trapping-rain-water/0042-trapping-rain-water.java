@@ -1,4 +1,5 @@
 // Water stored at any unit is = Min(leftMaxHeightBuilding, rightMaxHeightBuilding) - height of current unit
+//Time complexity is O(3*n) ~~ O(n) and space is O(2n) ~ O(n)
 class Solution {
     public int trap(int[] height) {
 
