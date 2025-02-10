@@ -1,10 +1,10 @@
 class Solution {
     public String clearDigits(String s) {
         StringBuilder res = new StringBuilder("");
-        for(int i = 0; i < s.length(); i++){
-            var isDigit = Character.isDigit(s.charAt(i));
+        for(char c : s.toCharArray()){
+            var isDigit = Character.isDigit(c);
             if(isDigit) res.deleteCharAt(res.length()-1);
-            else res.append(s.charAt(i));
+            else res.append(c);
         }
         return res.toString();
     }
