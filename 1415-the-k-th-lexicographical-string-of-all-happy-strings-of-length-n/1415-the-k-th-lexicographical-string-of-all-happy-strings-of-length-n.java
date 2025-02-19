@@ -1,7 +1,11 @@
 class Solution {
+
+    int count;
+
     public String getHappyString(int n, int k) {
         List<String> ans = new ArrayList<>();
         StringBuilder currentVal = new StringBuilder();
+        count = k;
         formHappyString(n, 0, currentVal, ans);
         if(ans.size() < k) return "";
         return ans.get(k-1);
@@ -11,6 +15,7 @@ class Solution {
 
         if(currentVal.length() == n ) {
             ans.add(currentVal.toString());
+            count--;
             return;
         }
 
@@ -23,6 +28,7 @@ class Solution {
             currentVal.append(curr);
             formHappyString(n, idx+1, currentVal, ans);
             currentVal.deleteCharAt(currentVal.length()-1);
+            if(count == 0) return;
         }
     }
 }
