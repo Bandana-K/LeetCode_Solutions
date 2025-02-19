@@ -2,12 +2,12 @@ class Solution {
     public String getHappyString(int n, int k) {
         List<String> ans = new ArrayList<>();
         StringBuilder currentVal = new StringBuilder();
-        formHappyString(n, k, 0, currentVal, ans);
+        formHappyString(n, 0, currentVal, ans);
         if(ans.size() < k) return "";
         return ans.get(k-1);
     }
 
-    void formHappyString(int n, int k, int idx, StringBuilder currentVal,  List<String> ans){
+    void formHappyString(int n, int idx, StringBuilder currentVal,  List<String> ans){
 
         if(currentVal.length() == n ) {
             ans.add(currentVal.toString());
@@ -21,7 +21,7 @@ class Solution {
             } 
 
             currentVal.append(curr);
-            formHappyString(n, k-1, idx+1, currentVal, ans);
+            formHappyString(n, idx+1, currentVal, ans);
             currentVal.deleteCharAt(currentVal.length()-1);
         }
     }
