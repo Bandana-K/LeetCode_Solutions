@@ -1,3 +1,5 @@
+// The idea is to keep a map of numbers and their index. So that to check if the fibonacci sum exists, it can be checked in O(1)
+// And keep on going with x1, x2 till the time we find x1+x2 in map. Do this for each i and j O(n^2) at max
 class Solution {
     public int lenLongestFibSubseq(int[] arr) {
         int n = arr.length, result = 0;
@@ -6,14 +8,11 @@ class Solution {
             arrIdx.put((long) arr[i], i);
         }
 
-        // System.out.println(arrIdx);
 
         for(int i = 0; i < n ; i++){
             int x1 = arr[i], count = 0, k=0;
-            // System.out.println(" i = "+i );
             for(int j = i+1; j<n; ){
                 long sum = (long) x1 + arr[j];
-                // System.out.println(" x1 = " + x1 + " j = "+j + " arr[j] = " + arr[j]);
                 if(arrIdx.containsKey(sum)){
                     if(count == 0){
                         count = count+3;
@@ -21,7 +20,6 @@ class Solution {
                     } else count++;
                     x1 = arr[j];
                     j = arrIdx.get(sum);
-                    // System.out.println(" sum = " + sum + " found, new j = " + j + " count = "+ count);
                     result = Math.max(result, count);
                 } else {
                     if(count == 0) j++;
@@ -32,8 +30,6 @@ class Solution {
                     }
                 }
             }
-            // System.out.println(" result = "+ result);
-
         }
 
         return result;
