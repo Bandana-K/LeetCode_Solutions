@@ -5,13 +5,10 @@ class Solution {
         Map<Integer, List<Integer>> numIndicesMap = new HashMap<>();
         populateMap(numIndicesMap, nums);
 
-        // System.out.println(numIndicesMap);
-
         List<Integer> result = new ArrayList<>();
         for(int i = 0; i< queries.length; i++){
             int idx = queries[i];
             int num = nums[idx];
-            // System.out.println("For i = "+ i+ " idx = " + idx + " num = " + num);
             int dist = findDistnace(numIndicesMap, num, idx, nums.length);
             result.add(dist);
         }
@@ -25,7 +22,6 @@ class Solution {
         int low = 0, high = searchList.size()-1, result = 0;
         while(low<=high){
             int mid = low + (high-low)/2;
-            // System.out.println("low = "+ low + " high = " + high + " mid = " + mid);
             if(searchList.get(mid) == target){
                 result = mid;
                 break;
@@ -35,8 +31,6 @@ class Solution {
                 high = mid-1;
             }
         }
-
-        // System.out.print("For num = "+ num + " target = " + target + " result = " + result);
 
         int left =0, right = 0;
         if(result == 0){
@@ -49,8 +43,6 @@ class Solution {
             right = searchList.get(result+1)-searchList.get(result);
             left = searchList.get(result)-searchList.get(result-1);
         }
-
-        // System.out.println(" Left = "+ left + " right = " + right);
         return Math.min(left, right);
     }
 
