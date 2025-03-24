@@ -7,38 +7,30 @@ class Solution {
             }
         });
 
-        List<List<Integer>> mergedMeetings = mergeMeetings(meetings);
-        System.out.println(mergedMeetings);
+        List<int[]> mergedMeetings = mergeMeetings(meetings);
         int meetingDays = 0;
         for(var meeting : mergedMeetings){
-            meetingDays += meeting.get(1)-meeting.get(0)+1;
+            meetingDays += meeting[1]-meeting[0]+1;
         }
 
         return days-meetingDays;
     }
 
-    List<List<Integer>> mergeMeetings(int[][] meetings){
-        List<List<Integer>> result = new ArrayList<>();
-        List<Integer> meeting = new ArrayList<>();
+    List<int[]> mergeMeetings(int[][] meetings){
+        List<int[]> result = new ArrayList<>();
         int start = meetings[0][0], end = meetings[0][1];
         for(int i = 1; i<meetings.length; i++){
             if(meetings[i][0] <= end) {
                 end = Math.max(end, meetings[i][1]);
             }
             else{
-                meeting.add(start);
-                meeting.add(end);
-                result.add(meeting);
-                meeting = new ArrayList<>();
+                result.add(new int[]{start, end});
                 start = meetings[i][0];
                 end = meetings[i][1];
             }
         }
         
-        meeting.add(start);
-        meeting.add(end);
-        result.add(meeting);
-
+        result.add(new int[]{start, end});
         return result;
     }
 }
