@@ -1,11 +1,6 @@
 class Solution {
     public int countDays(int days, int[][] meetings) {
-        Arrays.sort(meetings, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] a, int[] b) {
-                return Integer.compare(a[0], b[0]);
-            }
-        });
+        Arrays.sort(meetings, (a,b) -> a[0]-b[0]);
 
         List<int[]> mergedMeetings = mergeMeetings(meetings);
         int meetingDays = 0;
